@@ -2,17 +2,16 @@
 <html>
 <head>
 	<title>Simon</title>
-	<link rel="stylesheet" type="text/css" href="t3.css">
 	<link href="https://fonts.googleapis.com/css?family=Montserrat" rel="stylesheet">
 	<link rel="stylesheet" type="text/css" href="simon.css">
 	<link href="https://fonts.googleapis.com/css?family=Dhurjati" rel="stylesheet">
 </head>
 <body>
 	<div id="simon">
-	    <div id="red" class="inner"></div>
-	    <div id="green" class="inner"></div>
-	    <div id="blue" class="inner"></div>
-	    <div id="yellow" class="inner"></div>
+	    <div id="red" class="inner" onclick="simon.click(this)" 	data-background="#F00!#B00"></div>
+	    <div id="green" class="inner" onclick="simon.click(this)" 	data-background="#0F0!#0A0"></div>
+	    <div id="blue" class="inner" onclick="simon.click(this)" 	data-background="#00F!#00B"></div>
+	    <div id="yellow" class="inner" onclick="simon.click(this)" 	data-background="#FF0!#CC0"></div>
 	    <div id="round" class="inner">
 		<div id="button-container" class="inner">
 			<div id='status'></div>
