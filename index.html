@@ -7,26 +7,27 @@
 	<link href="https://fonts.googleapis.com/css?family=Dhurjati" rel="stylesheet">
 </head>
 <body>
-	<div id="simon">
-	    <div id="red" class="inner" onmousedown="simon.click(this)" 	data-background="#F00!#B00"></div>
-	    <div id="green" class="inner" onmousedown="simon.click(this)" 	data-background="#0F0!#0A0"></div>
-	    <div id="blue" class="inner" onmousedown="simon.click(this)" 	data-background="#00F!#00B"></div>
-	    <div id="yellow" class="inner" onmousedown="simon.click(this)" 	data-background="#FF0!#CC0"></div>
-	    <div id="round" class="inner">
-		<div id="button-container" class="inner">
-			<div id='status'></div>
-			<h1>SIMON</h1>
-			<div>
-				<span id="" class="push" onclick="simon.restart()">Restart</span>
-				<span id="" class="push" onclick="simon.turn()">Start</span>
-				<span id="" class="push" onclick="simon.strict = !simon.strict">Strict</span>
+	<div id="outer-container">
+		<div id="simon">
+		    <div id="red" class="inner" onmousedown="simon.click(this)" 	data-background="#F00!#B00"></div>
+		    <div id="green" class="inner" onmousedown="simon.click(this)" 	data-background="#0F0!#0A0"></div>
+		    <div id="blue" class="inner" onmousedown="simon.click(this)" 	data-background="#00F!#00B"></div>
+		    <div id="yellow" class="inner" onmousedown="simon.click(this)" 	data-background="#FF0!#CC0"></div>
+		    <div id="round" class="inner">
+			<div id="button-container" class="inner">
+				<div id='status'></div>
+				<h1>SIMON</h1>
+				<div>
+					<span id="start" class="push" onclick="simon.restart()">(Re)Start</span>
+					<span id="strict" class="push" onclick="simon.strictSwitch()">Strict</span>
+				</div>
+				<div>
+					<div id="count">0</div>
+					<div style="font-size:20px;">Count</div>
+				</div>
 			</div>
-			<div>
-				<div id="count">0</div>
-				<div>Count</div>
-			</div>
+		    </div>
 		</div>
-	    </div>
 	</div>
 	<script type="text/javascript" src="simon.js"></script>
 </body>
