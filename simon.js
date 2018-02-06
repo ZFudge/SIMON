@@ -77,6 +77,10 @@ const simon = {
 	won() {
 		this.colorSoundTable[6].play();
 		setTimeout(()=>this.restart(),6500);
+		if (this.hard) {
+			this.hardMode();
+			this.hardMode();
+		}
 	},
 	lost() {
 		this.colorSoundTable[7].play();
@@ -121,14 +125,45 @@ const simon = {
 	},
 	status: {
 		light: document.getElementById("status"),
-		off: ["background-color: #444;", "box-shadow: inset 0 -2px 3px 0 #222, 0 0 10px 3px #222"],
-		green: ["background-color: #0F0", "box-shadow: inset 0 -2px 10px 0 #050, inset 0 2px 10px 0 #FFF, 0 0 10px 3px #050"],
-		red: ["background-color: #F00", "box-shadow: inset 0 -2px 10px 0 #500, inset 0 2px 10px 0 #FFF, 0 0 10px 3px #500"],
-		changeLight(settings) {
-			this.light.style.backgroundColor = settings[0];
-			this.light.style.boxShadow = settings[1];
+		off: ["#444", "inset 0 -2px 3px 0 #222, 0 0 10px 3px #222"],
+		on: ["#DDD", "inset 0 -2px 3px 0 #BBB, 0 0 10px 3px #BBB"],
+		green: ["#0F0", "inset 0 -2px 10px 0 #050, inset 0 2px 10px 0 #FFF, 0 0 10px 3px #050"],
+		red: ["#F00", "inset 0 -2px 10px 0 #500, inset 0 2px 10px 0 #FFF, 0 0 10px 3px #500"],
+		changeLight(setting) {
+			this.light.style.backgroundColor = simon.status[setting][0];
+			this.light.style.boxShadow = simon.status[setting][1];
 		}
+	},
+	hard: false,
+	hardMode() {
+		if (this.hard) {
+			this.hard = false;
+			document.getElementById("simon").style.transitionDuration = "0s";
+			document.getElementById("round").style.transitionDuration = "0s";
+			this.rotation = 0;
+		} else {
+			if (!this.pattern.length) this.turn();
+			this.hard = true;
+			if (!this.strict) this.strictSwitch();
+			this.hardLoop();
+		}
+	},
+	hardLoop() {
+		const speed = this.iterationSpeed * 36;
+		document.getElementById("simon").style.transitionDuration = speed/1000 + "s";
+		document.getElementById("round").style.transitionDuration = speed/1000 + "s";
+		this.rotation = 1;
+		setTimeout(() => {
+		    this.rotation = -1;
+		    setTimeout(()=>this.hardLoop(), speed);
+		}, speed);
+	},
+	set rotation(n) {
+		document.getElementById("simon").style.transform = "rotate(" + n + "turn)";
+		document.getElementById("round").style.transform = "rotate(" + (n * -1) + "turn)";
+		
 	}
 };
 
 for (let i = 0; i < 4; i++) simon.colorSoundTable[i][1].loop = true;
+

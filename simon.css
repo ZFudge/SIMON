@@ -37,6 +37,7 @@ body {
   display: grid;
   grid-template-columns: repeat(4, 1fr);
   grid-template-rows: repeat(4, 1fr);
+  transition-timing-function: linear;
 }
 
 .push {
@@ -60,7 +61,8 @@ body {
 }
 
 #round {
-  transition-duration: 0.5s;
+  transition-duration: 25s;
+  transition-timing-function: linear;
   text-align: center;
   z-index: 2;
   border-radius: 50%;
