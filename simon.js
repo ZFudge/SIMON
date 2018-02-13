@@ -17,14 +17,14 @@ const simon = {
 		}
 	},
 	colorSoundTable: [
-		[document.getElementById("red"), new Audio("red.wav")],
-		[document.getElementById("green"), new Audio("green.wav")],
-		[document.getElementById("blue"), new Audio("blue.wav")],
-		[document.getElementById("yellow"), new Audio("yellow.wav")],
+		[document.getElementById("red"), new Audio("red.mp3")],
+		[document.getElementById("green"), new Audio("green.mp3")],
+		[document.getElementById("blue"), new Audio("blue.mp3")],
+		[document.getElementById("yellow"), new Audio("yellow.mp3")],
 		new Audio("buzz.mp3"),
 		new Audio("correct.mp3"),
-		new Audio("won.wav"),
-		new Audio("lost.wav")
+		new Audio("won.mp3"),
+		new Audio("lost.mp3")
 	],
 	get topElement_Sound() {
 		return this.pattern[this.pattern.length-1];
@@ -34,8 +34,8 @@ const simon = {
 		this.pattern.push(this.colorSoundTable[index]);
 		this.topElement_Sound[1].play();
 		this.topElement_Sound[0].style.backgroundColor = Array.from(this.colorSoundTable[index][0].dataset.background.split("!"))[0];
-		this.clickable = true;
 		setTimeout(() => {
+			this.clickable = true;
 			this.topElement_Sound[0].style.backgroundColor = this.colorSoundTable[index][0].dataset.background.split("!")[1];
 			this.topElement_Sound[1].pause();
 			this.topElement_Sound[1].currentTime = 0;
