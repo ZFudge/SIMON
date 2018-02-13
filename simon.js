@@ -7,7 +7,7 @@ const simon = {
 	clickable: false,
 	strict: false,
 	strictSwitch() {
-		if (this.active) {
+		if (this.active && this.clickable) {
 			this.strict = !this.strict;
 			if (this.strict) {
 				document.getElementById('strict').style.color = '#F00'
@@ -62,16 +62,18 @@ const simon = {
 	},
 	restartable: true,
 	restart() {
-		this.count = -1;
-		this.updateCount();
-		this.pattern = [];
-		this.clickPattern = [];
-		this.iterationSpeed = 750;
-		this.clickable = false;
-		this.active = true;
-		simon.status.changeLight("on");
-		document.getElementById("count").style.color = "#EEE";
-		if (this.restartable) setTimeout(() => this.turn(), 750)
+		if (this.clickable || !this.pattern.length) {
+			this.count = -1;
+			this.updateCount();
+			this.pattern = [];
+			this.clickPattern = [];
+			this.iterationSpeed = 750;
+			this.clickable = false;
+			this.active = true;
+			simon.status.changeLight("on");
+			document.getElementById("count").style.color = "#EEE";
+			if (this.restartable) setTimeout(() => this.turn(), 750)
+		}
 	},
 	updateCount() {
 		this.count++;
@@ -147,7 +149,7 @@ const simon = {
 		}
 	},
 	status: {
-		light: document.getElementById("status"),
+		light: document.getElementById("status-light"),
 		off: ["#444", "inset 0 -2px 3px 0 #222, 0 0 10px 3px #222"],
 		on: ["#DDD", "inset 0 -2px 3px 0 #BBB, 0 0 10px 3px #AAA"],
 		green: ["#0F0", "inset 0 -2px 10px 0 #0F0, inset 0 2px 10px 0 #CFC, 0 0 10px 3px #0D0"],
@@ -159,7 +161,7 @@ const simon = {
 	},
 	hard: false,
 	hardMode() {
-		if (this.active) {
+		if (this.active && this.clickable) {
 			if (this.hard) {
 				this.hard = false;
 				document.getElementById("simon").style.transitionDuration = "0s";
