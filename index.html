@@ -2,9 +2,10 @@
 <html>
 <head>
 	<title>Zach Fudge - Simon</title>
-	<link href="https://fonts.googleapis.com/css?family=Montserrat" rel="stylesheet">
+	<meta charset="utf-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<link href="https://fonts.googleapis.com/css?family=Montserrat|Dhurjati" rel="stylesheet">
 	<link rel="stylesheet" type="text/css" href="simon.css">
-	<link href="https://fonts.googleapis.com/css?family=Dhurjati" rel="stylesheet">
 </head>
 <body>
 	<div id="outer-container">
@@ -15,10 +16,10 @@
 		    <div id="yellow" class="inner" onmousedown="simon.click(this)" 	data-background="#FF0!#CC0"></div>
 		    <div id="round" class="inner">
 			<div id="button-container" class="inner">
-				<div id='status'></div>
+				<div id='status-light'></div>
 				<h1>SIMON</h1>
 				<div>
-					<span id="start" class="push" onclick="simon.restart()">New Game</span>
+					<span id="new-game" class="push" onclick="simon.restart()">New Game</span>
 					<span id="strict" class="push" onclick="simon.strictSwitch()">Strict</span>
 					<span id="hard" class="push" onclick="simon.hardMode()">Hard</span>
 				</div>
