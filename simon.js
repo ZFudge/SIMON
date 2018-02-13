@@ -81,7 +81,6 @@ const simon = {
 	},
 	checkIterationSpeed() {
 		(this.count >= 13) ? this.iterationSpeed = 300 : (this.count >= 9) ? this.iterationSpeed = 500 : (this.count >= 5) ? this.iterationSpeed = 650 : null;
-						
 	},
 	won() {
 		if (this.hard) this.hardMode();
@@ -108,8 +107,8 @@ const simon = {
 			clearInterval(loop);
 		},3500);
 	},
-	click(btn) {
-		if (this.pattern.length && this.clickable) {
+	click(eventData,btn) {
+		if (eventData.button === 0 && this.pattern.length && this.clickable) {
 			// answered correctly
 			if (btn === this.pattern[this.clickPattern.length][0]) {
 				this.pattern[this.clickPattern.length][1].play();
