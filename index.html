@@ -9,6 +9,7 @@
 </head>
 <body>
 	<div id="outer-container">
+		<div id="nav-placeholder"></div>
 		<div id="simon">
 		    <div id="red" class="inner" onmousedown="simon.click(event, this)" 	data-background="#F00!#B00"></div>
 		    <div id="green" class="inner" onmousedown="simon.click(event, this)" 	data-background="#0F0!#0A0"></div>
@@ -32,5 +33,8 @@
 		</div>
 	</div>
 	<script type="text/javascript" src="simon.js"></script>
+	<script type="text/javascript">
+		document.getElementById('nav-placeholder').innerHTML = '<object type="text/html" data="../nav.html" ></object>';
+	</script>
 </body>
 </html>
